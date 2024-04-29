@@ -150,9 +150,9 @@ function limitText(limitField, limitNum) {
 				echo "<option>".$referralsource['sourceid']."</option>";
 				}
 			?> </option></select>  
-  	</div><br><br>
-		<div class="input-group">
-  	  <label>Did Index consent to discuss contacts</label>
+  <br><br>
+
+  	  <label>Did Index consent?</label>
   	  <select name="consent" style="float:left; height:40px" required><option>
 														<?php
 									$selectconsent=mysql_query("SELECT * FROM consent");
@@ -161,8 +161,9 @@ function limitText(limitField, limitNum) {
 				echo "<option>".$consent['name']."</option>";
 				}
 			?> </option></select>  
-  	</div><br><br>
-	  	
+
+	  	<div/>
+		<br><br>
   	<div class="input-group">
 	<input type ="reset" class ="btn"value="Clear" style= "width: 60px; background-color: purple"=>&nbsp;&nbsp;&nbsp;&nbsp;
   	  <button type="submit" class="btn" name="register">Finish</button>

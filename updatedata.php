@@ -20,7 +20,7 @@
 <body>
 
 <div class="header">
-	<h2>AIT Database</h2>
+	<h2>Home Page</h2>
 	
 	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 </div>
@@ -39,24 +39,23 @@
   	<?php endif ?>
 
     <!-- logged in user information -->
-    <?php  if (isset($_SESSION['username'])) : ?>
+    <?php  if (isset($_SESSION['username'])) : 
+    ?>
     	
-				
-	<a style="text-decoration:none" href ="indexclient.php" class="btn" >index Register</a>
+		<ul style="list-style: none" class="list-group">
+	<li><span class="fa fa-file"> </span> <a  style="text-decoration:none" href="indexreport.php" class = "btn"> <b>Index clients list</a></li>
+	<!--&nbsp;&nbsp;<br><li><span class="fa fa-money"> </span> <a href="contactreport.php" style="color:black">Contacts list</a></li>-->
 	
-	<a style="text-decoration:none"href ="contacts.php" class="btn" >Contact Register</a>
 	
-	<a style="text-decoration:none"href ="quarterlyreports.php" class="btn" >Generate Reports</a>
+	&nbsp;&nbsp;<br><li><span class="fa fa-money"> </span> <a style="text-decoration:none" href="followupcontacts.php" class = "btn">Contacts for followup</a>
 	
-	<a style="text-decoration:none"href ="updatedata.php" class="btn" >Data cleaning</a>
-	
-	<br><br><br>
-	 <a href="index.php?logout='1'" class="btn" style="background-color: red">Logout</a>
-    <?php endif ?><br>
-<br><br><br>
- <?php include("Footer.php"); ?>	
+   	<br><p> 
+    <?php endif ?>
+	<tr><td><br><br>
+<p><input type="button" class="prev-button"value="Previous" onClick="history.go(-1);"></p>
+<br></td><td></td><td></td><td><p><a href = "index.php"class="btn" style="background-color: red">Cancel </a></p>
+<br> <?php include("Footer.php"); ?>	
 	</div>
-	
-
+</ul>		
 </body>
 </html>

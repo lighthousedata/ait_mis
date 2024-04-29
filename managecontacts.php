@@ -43,7 +43,7 @@
     	
 		<ul style="list-style: none" class="list-group">
 	<li><span class="fa fa-money"> </span> <a href="contacts.php"><b>Add Contacts </a></li>
-	&nbsp;&nbsp;<br><li><span class="fa fa-money"> </span> <a href="frscontacts.php"style="color:black"> Add FRS Contacts</a></li>
+	<!--&nbsp;&nbsp;<br><li><span class="fa fa-money"> </span> <a href="frscontacts.php"style="color:black"> Add FRS Contacts</a></li>-->
 	<br><li><span class="fa fa-money"> </span> <a href=""style="color:black"> </a></li>
 	<br><li><span class="fa fa-money"> </span> <a href=""style="color:black"></a></li>
 	<br>

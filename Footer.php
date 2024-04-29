@@ -1,8 +1,8 @@
    <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel-footer text-center"> &copy; 2020. All Rights Reserved</div>
-                 <img src="lh1.png" width="200" height="10" id="Image" align="center">
+                    <div class="panel-footer text-center"> &copy; <img src="lh1.png" width="200" height="10" id="Image" align="center"> :All Rights Reserved</div>
+                
                 </div>
             </div>
             <!-- /.row -->

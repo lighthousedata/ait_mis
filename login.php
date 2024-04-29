@@ -23,11 +23,6 @@
 	<center>
   	<div class="input-group">
  <br> <button type="submit" class="btn" name="login_user">Login</button>
- 
- </div>
-  	<p>
-  		Not registered? <a href="register.php">Sign up</> 
-  	</p>
   	</div></center>
   </form>
 </body>

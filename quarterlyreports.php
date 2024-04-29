@@ -20,7 +20,7 @@
 <body>
 
 <div class="header">
-	<h2>Select period for various reports </h2>
+	<h2>AIT Reports and List of clients to view</h2>
 	
 	<p>You are loged in as <strong><?php echo $_SESSION['username']; ?></strong></p>
 </div>
@@ -41,25 +41,28 @@
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['username'])) : ?>
     	
-		<ul style="list-style: none" class="list-group">
-	<br><li><span class="fa fa-file"> </span> <a href="quarter2_2021.php"><b>Qaurter 3 2021</a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter4_2021.php"><b>Qaurter 4 2021</a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter1_2022.php"><b>Qaurter 1 2022 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter2_2022.php"><b>Qaurter 2 2022 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter3_2022.php"><b>Qaurter 3 2022 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter4_2022.php"><b>Qaurter 4 2022 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter1_2023.php"><b>Qaurter 1 2023 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter2_2023.php"><b>Qaurter 2 2023 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter3_2023.php"><b>Qaurter 3 2023 </a></li>
-	<br><li><span class="fa fa-file"> </span> <a href="quarter4_2023.php"><b>Qaurter 4 2023 </a></li>
-	</li>
+		<center>
+	<span class="fa fa-money"> </span> <a style="text-decoration:none" href="facilitysummaries.php" class="btn" >AIT Cascade</a><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="offered.php" class="btn" >Clients offerred AIT</a><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="accepted.php" class="btn" >Clients Accepted AIT</a><br>
+	<!--<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="ElicitedContacts.php" class="btn" >Elicited Contacts age and Sex</a><br>-->
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="negativecontacts.php" class="btn" >New Neg Age and Sex Disag</a><br>	
+	 <br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="recentnegative.php" class="btn" >Recent Negative Age  and Sex Disag</a><br>	
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="positivecontacts.php" class="btn" >New Pos Age and Sex Disag</a><br>	
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="previouseposcontacts.php" class="btn" >Previous positives contacts Age and Sex Disag</a><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="eligiblecontacts.php" class="btn" >Eligible Contacts Age and Sex Disag</a><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="reachedcontacts.php" class="btn" >Reached contacts Age and Sex Disag</a><br>
+	<br><br> <button><h2>Lisit of clients </h2></button><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="indexclientslist.php" class="btn" >List of Index clients</a><br>
+	<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="eligiblecontactslist.php" class="btn" >List of Eligible Contacts</a><br>
+		<br><span class="fa fa-money"> </span> <a style="text-decoration:none" href="reachedcontactslist.php" class="btn" >List of reached contacts</a>
 	
     	<br><p> 
     <?php endif ?>
 	<tr><td><br><br>
-<p><input type="button" class="prev-button"value="Previous" onClick="history.go(-1);"></p>
+<!--<p><input type="button" class="prev-button"value="Previous" onClick="history.go(-1);"></p> -->
 <br></td><td></td><td></td><td><p><a href = "index.php"class="btn" style="background-color: red">Cancel </a></p>
-<br> <div class="panel-footer text-center">&copy; 2020. All Rights Reserved</div>
+<!--<br> <div class="panel-footer text-center">&copy; 2020. All Rights Reserved</div>-->
 	</div>
 </ul>		
 </body>
