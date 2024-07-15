@@ -18,13 +18,13 @@
 	$dateidentified=date('y/m/d');
 	$currentyear=date('D/d/m/Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
 				<?php
 				$receivedid=$_GET['editclientid'];
-				$selecteddetails=mysql_fetch_array(mysql_query("SELECT * FROM indexreg WHERE indexnum='$receivedid'"));
+				$selecteddetails=mysqli_fetch_array(mysqli_query($db,"SELECT * FROM indexreg WHERE indexnum='$receivedid'"));
 				$indexnum=$selecteddetails['indexnum'];
 				$facility=$selecteddetails['facility'];
 				$dateidentified=$selecteddetails['dateidentified'];
@@ -46,12 +46,12 @@
 				$consent=$_POST['consent'];
 				//$eligible=$_POST['eligible'];
 								
-				$update=mysql_query("UPDATE indexreg SET facility='$facility',indexnum='$indexnum', dateidentified='$dateidentified',
+				$update=mysqli_query($db,"UPDATE indexreg SET facility='$facility',indexnum='$indexnum', dateidentified='$dateidentified',
 				gender='$gender',age='$age',category='$category',source='$source',  consent = '$consent' WHERE indexnum='$indexnum'");
 				if($update){  echo "<meta http-equiv =\"Refresh\" content=\"1; url=indexreportq2_21.php?updatedinfo=udateDone\">";
 				  }
 				else{
-				 echo "<p><font color='red' style='text-align:center'>Update failed</font></p>".mysql_error();
+				 echo "<p><font color='red' style='text-align:center'>Update failed</font></p>".mysqli_error($db);
 				 }
 				   exit();
 				 

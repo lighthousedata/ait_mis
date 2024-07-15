@@ -32,8 +32,8 @@ function limitText(limitField, limitNum) {
 				$today=date('d/m/Y');
 				$currentdate =date('D');
 				echo"<font size='+1'>$currentyear</font>";
-				$username=mysql_query("SELECT username from users where password(?)");
-				echo "<fontsize='+1'>$username</font>";
+				// $username=mysql_query("SELECT username from users where password(?)");
+				// echo "<fontsize='+1'>$username</font>";
 				
 				?>
  </div>
@@ -69,7 +69,7 @@ function limitText(limitField, limitNum) {
 				$consent = $_POST['consent'];
 						
 				
-				$insertdetails =mysql_query("INSERT INTO indexreg(facility,indexnum,dateidentified,arthtsno,gender,age,category,source,
+				$insertdetails =mysqli_query($db,"INSERT INTO indexreg(facility,indexnum,dateidentified,arthtsno,gender,age,category,source,
 												consent) 
 									values('$facility','$indexnumber','$dateidentified','$arthtsno','$gender','$age','$category',
 											'$referralsource','$consent')");
@@ -78,7 +78,7 @@ function limitText(limitField, limitNum) {
 				 {
 				 echo "<p><font color='green' style='text-align:center'>Data successfully saved</font></p>";
 				 }else{
-				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysql_error();
+				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysqli_error($db);
 				 }
 				}
 				}
@@ -90,8 +90,8 @@ function limitText(limitField, limitNum) {
   	  <label>Facility Name</label>
   	  <select name="facility" style="float:left; height:40px" required ="YES"><option>
 														<?php
-									$selectfacilities=mysql_query("SELECT * FROM facilities");
-				while($facility=mysql_fetch_array($selectfacilities)){
+									$selectfacilities=mysqli_query($db, "SELECT * FROM facilities");
+				while($facility=mysqli_fetch_array($selectfacilities)){
 				
 				echo "<option>".$facility['FacName']."</option>";
 				}
@@ -114,8 +114,8 @@ function limitText(limitField, limitNum) {
   	  <label>Gender</label>
   	 <select name="gender" style="float:left; height:40px" required "YES"><option>
 														<?php
-									$selectsex=mysql_query("SELECT * FROM gender");
-				while($gender=mysql_fetch_array($selectsex)){
+									$selectsex=mysqli_query($db,"SELECT * FROM gender");
+				while($gender=mysqli_fetch_array($selectsex)){
 				
 				echo "<option>".$gender['gender']."</option>";
 				}
@@ -133,8 +133,8 @@ function limitText(limitField, limitNum) {
   	  <label>Index category</label>
   	  <select name="category" style="float:left; height:40px" required><option>
 														<?php
-				$selectcategories=mysql_query("SELECT * FROM indexcategories");
-				while($category=mysql_fetch_array($selectcategories)){
+				$selectcategories=mysqli_query($db,"SELECT * FROM indexcategories");
+				while($category=mysqli_fetch_array($selectcategories)){
 				
 				echo "<option>".$category['catname']."</option>";
 				}
@@ -144,8 +144,8 @@ function limitText(limitField, limitNum) {
   	  <label>Entry Point</label>
   	  <select name="source" style="float:left; height:40px" required><option>
 														<?php
-				$selectsouce=mysql_query("SELECT * FROM entrypoints");
-				while($referralsource=mysql_fetch_array($selectsouce)){
+				$selectsouce=mysqli_query($db,"SELECT * FROM entrypoints");
+				while($referralsource=mysqli_fetch_array($selectsouce)){
 				
 				echo "<option>".$referralsource['sourceid']."</option>";
 				}
@@ -155,8 +155,8 @@ function limitText(limitField, limitNum) {
   	  <label>Did Index consent?</label>
   	  <select name="consent" style="float:left; height:40px" required><option>
 														<?php
-									$selectconsent=mysql_query("SELECT * FROM consent");
-				while($consent=mysql_fetch_array($selectconsent)){
+									$selectconsent=mysqli_query($db,"SELECT * FROM consent");
+				while($consent=mysqli_fetch_array($selectconsent)){
 				
 				echo "<option>".$consent['name']."</option>";
 				}

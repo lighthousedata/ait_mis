@@ -1,5 +1,5 @@
 <?php require_once("includes/Connection.php"); ?>
-<?php include("includes/functions.php"); ?>
+<?php include("includes/form_functions.php"); ?>
 <?php //include("includes/header.php"); ?>
 <?php include('server.php') ?>
 	
@@ -51,46 +51,46 @@ $tdate=$_POST['tdate'];
          <div class="col-lg-12">
 				<?php
 				// 1 UFC querying date
-				$select0=mysql_query("SELECT * FROM indexreg where age <1 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes' "); $fck0=mysql_num_rows($select0);
-				$select00=mysql_query("SELECT * FROM indexreg where age <1  AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck0=mysql_num_rows($select00);
+				$select0=mysqli_query($db,"SELECT * FROM indexreg where age <1 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes' "); $fck0=mysqli_num_rows($select0);
+				$select00=mysqli_query($db,"SELECT * FROM indexreg where age <1  AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck0=mysqli_num_rows($select00);
 				
-				$select1=mysql_query("SELECT * FROM indexreg where age >=1 AND age <5 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $fck1=mysql_num_rows($select1);
-				$select2=mysql_query("SELECT * FROM indexreg where age >=1 AND age <5  AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck1=mysql_num_rows($select2);
+				$select1=mysqli_query($db,"SELECT * FROM indexreg where age >=1 AND age <5 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $fck1=mysqli_num_rows($select1);
+				$select2=mysqli_query($db,"SELECT * FROM indexreg where age >=1 AND age <5  AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck1=mysqli_num_rows($select2);
 				
-				$select3=mysql_query("SELECT  * FROM indexreg where age >4 AND age <10  AND gender ='female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");$fck2=mysql_num_rows($select3);
-				$select4=mysql_query("SELECT * FROM indexreg where age >4 AND age < 10  AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes' "); $mck2=mysql_num_rows($select4);
+				$select3=mysqli_query($db,"SELECT  * FROM indexreg where age >4 AND age <10  AND gender ='female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");$fck2=mysqli_num_rows($select3);
+				$select4=mysqli_query($db,"SELECT * FROM indexreg where age >4 AND age < 10  AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes' "); $mck2=mysqli_num_rows($select4);
 				
-				$select5=mysql_query("SELECT * FROM indexreg where age>9 AND age <15 AND gender ='Female'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $fck3=mysql_num_rows($select5);
-				$select6=mysql_query("SELECT * FROM indexreg where age>9 AND age <15 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck3=mysql_num_rows($select6);
+				$select5=mysqli_query($db,"SELECT * FROM indexreg where age>9 AND age <15 AND gender ='Female'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $fck3=mysqli_num_rows($select5);
+				$select6=mysqli_query($db,"SELECT * FROM indexreg where age>9 AND age <15 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck3=mysqli_num_rows($select6);
 				
-				$select7=mysql_query("SELECT * FROM indexreg where age >14 AND age <20 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck4=mysql_num_rows($select7);
-				$select8=mysql_query("SELECT * FROM indexreg where age >14 AND age <20 AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck4=mysql_num_rows($select8);
+				$select7=mysqli_query($db,"SELECT * FROM indexreg where age >14 AND age <20 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck4=mysqli_num_rows($select7);
+				$select8=mysqli_query($db,"SELECT * FROM indexreg where age >14 AND age <20 AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck4=mysqli_num_rows($select8);
 				
-				$select9=mysql_query("SELECT * FROM indexreg where age >19 AND age <25 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck5=mysql_num_rows($select9);
+				$select9=mysqli_query($db,"SELECT * FROM indexreg where age >19 AND age <25 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck5=mysqli_num_rows($select9);
 				
-				$select10=mysql_query("SELECT * FROM indexreg where age >19 AND age <25 AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $mck5=mysql_num_rows($select10);
-				$select11=mysql_query("SELECT * FROM indexreg where age >24 AND age <30 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck6=mysql_num_rows($select11);
+				$select10=mysqli_query($db,"SELECT * FROM indexreg where age >19 AND age <25 AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $mck5=mysqli_num_rows($select10);
+				$select11=mysqli_query($db,"SELECT * FROM indexreg where age >24 AND age <30 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck6=mysqli_num_rows($select11);
 				
-				$select12=mysql_query("SELECT * FROM indexreg where age >24 AND age <30 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck6=mysql_num_rows($select12);
+				$select12=mysqli_query($db,"SELECT * FROM indexreg where age >24 AND age <30 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $mck6=mysqli_num_rows($select12);
 				
-				$select13=mysql_query("SELECT * FROM indexreg where age >29 AND age <35 AND gender='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck7=mysql_num_rows($select13);
+				$select13=mysqli_query($db,"SELECT * FROM indexreg where age >29 AND age <35 AND gender='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck7=mysqli_num_rows($select13);
 				
-				$select14=mysql_query("SELECT * FROM indexreg where age >29 AND age <35 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck7=mysql_num_rows($select14);
+				$select14=mysqli_query($db,"SELECT * FROM indexreg where age >29 AND age <35 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck7=mysqli_num_rows($select14);
 				
-				$select15=mysql_query("SELECT * FROM indexreg where age >34 AND age <40 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$fck8=mysql_num_rows($select15);
+				$select15=mysqli_query($db,"SELECT * FROM indexreg where age >34 AND age <40 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$fck8=mysqli_num_rows($select15);
 				
-				$select16=mysql_query("SELECT * FROM indexreg where age >34 AND age <40 AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $mck8=mysql_num_rows($select16);
+				$select16=mysqli_query($db,"SELECT * FROM indexreg where age >34 AND age <40 AND gender = 'Male'AND dateidentified between '$fdate' and '$tdate'  AND consent = 'Yes'"); $mck8=mysqli_num_rows($select16);
 				
-				$select17=mysql_query("SELECT * FROM indexreg where age >39 AND age <45 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck9=mysql_num_rows($select17);
+				$select17=mysqli_query($db,"SELECT * FROM indexreg where age >39 AND age <45 AND gender = 'Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck9=mysqli_num_rows($select17);
 				
-				$select18=mysql_query("SELECT * FROM indexreg where age >39 AND age <45 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck9=mysql_num_rows($select18);
+				$select18=mysqli_query($db,"SELECT * FROM indexreg where age >39 AND age <45 AND gender ='Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck9=mysqli_num_rows($select18);
 				
-				$select19=mysql_query("SELECT * FROM indexreg where age >44 AND age <50 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck10=mysql_num_rows($select19);
+				$select19=mysqli_query($db,"SELECT * FROM indexreg where age >44 AND age <50 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck10=mysqli_num_rows($select19);
 				
-				$select20=mysql_query("SELECT * FROM indexreg where age >44 AND age <50 AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck10=mysql_num_rows($select20);
+				$select20=mysqli_query($db,"SELECT * FROM indexreg where age >44 AND age <50 AND gender = 'Male' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck10=mysqli_num_rows($select20);
 				
-				$select21=mysql_query("SELECT * FROM indexreg where age >49 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck11=mysql_num_rows($select21);
-				$select22=mysql_query("SELECT * FROM indexreg where age >49 AND gender = 'MAle' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck11=mysql_num_rows($select22);
+				$select21=mysqli_query($db,"SELECT * FROM indexreg where age >49 AND gender ='Female' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'"); $fck11=mysqli_num_rows($select21);
+				$select22=mysqli_query($db,"SELECT * FROM indexreg where age >49 AND gender = 'MAle' AND dateidentified between '$fdate' and '$tdate' AND consent = 'Yes'");	$mck11=mysqli_num_rows($select22);
 								
 				
 				?>

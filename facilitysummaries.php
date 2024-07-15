@@ -1,5 +1,5 @@
 <?php require_once("includes/Connection.php"); ?>
-<?php include("includes/functions.php"); ?>
+<?php include("includes/form_functions.php"); ?>
 <?php //include("includes/header.php"); ?>
 <?php include('server.php') ?>
 	
@@ -51,34 +51,34 @@ $tdate=$_POST['tdate'];
 		<div class="row">
 				<?php
 				// 1 querying date
-				$selectchileka=mysql_query("SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
-				$totindexreg=mysql_num_rows($selectchileka);
+				$selectchileka=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
+				$totindexreg=mysqli_num_rows($selectchileka);
 				
-				$identfiedck=mysql_query("SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
-				$offeredck=mysql_num_rows($identfiedck);
+				$identfiedck=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
+				$offeredck=mysqli_num_rows($identfiedck);
 				
-				$resultck= mysql_query("SELECT sum(elicitedcontacts) AS Contacts  FROM indexdetails WHERE dateidentified between '$fdate' and '$tdate' ");
-				$rowck = mysql_fetch_assoc($resultck); 
+				$resultck= mysqli_query($db,"SELECT sum(elicitedcontacts) AS Contacts  FROM indexdetails WHERE dateidentified between '$fdate' and '$tdate' ");
+				$rowck = mysqli_fetch_assoc($resultck); 
 				$sumck = $rowck['Contacts'];
 				
-				$acceptck=(mysql_query("SELECT * FROM indexreg where consent = 'Yes' AND dateidentified between '$fdate' and '$tdate' ")); 
-				$totaccept=mysql_num_rows($acceptck);
+				$acceptck=(mysqli_query($db,"SELECT * FROM indexreg where consent = 'Yes' AND dateidentified between '$fdate' and '$tdate' ")); 
+				$totaccept=mysqli_num_rows($acceptck);
 				
-				$eligibleck= mysql_query("SELECT sum(eligibles) AS Eligible  FROM indexdetails WHERE dateidentified between '$fdate' and '$tdate' ");
-				$ckeligible = mysql_fetch_assoc($eligibleck); 
+				$eligibleck= mysqli_query($db,"SELECT sum(eligibles) AS Eligible  FROM indexdetails WHERE dateidentified between '$fdate' and '$tdate' ");
+				$ckeligible = mysqli_fetch_assoc($eligibleck); 
 				$toteligible = $ckeligible['Eligible'];
 				
-				$testvpchileka=mysql_query("SELECT * FROM reachedcontacts  WHERE  outcome= 'New Negative' AND outcomedate between '$fdate' and '$tdate'  ");
-				$testedvp=mysql_num_rows($testvpchileka);
+				$testvpchileka=mysqli_query($db,"SELECT * FROM reachedcontacts  WHERE  outcome= 'New Negative' AND outcomedate between '$fdate' and '$tdate'  ");
+				$testedvp=mysqli_num_rows($testvpchileka);
 												
-				$reachedchileka=mysql_query("SELECT * FROM reachedcontacts WHERE outcomedate between '$fdate' and '$tdate'  ");
-				$reachedck=mysql_num_rows($reachedchileka);
+				$reachedchileka=mysqli_query($db,"SELECT * FROM reachedcontacts WHERE outcomedate between '$fdate' and '$tdate'  ");
+				$reachedck=mysqli_num_rows($reachedchileka);
 				
-				$reacheeligiblechileka=mysql_query("SELECT * FROM reachedcontacts where outcome <> 'Previous Positive on ART' AND outcomedate between '$fdate' and '$tdate' ");
-				$reachegck=mysql_num_rows($reacheeligiblechileka);
+				$reacheeligiblechileka=mysqli_query($db,"SELECT * FROM reachedcontacts where outcome <> 'Previous Positive on ART' AND outcomedate between '$fdate' and '$tdate' ");
+				$reachegck=mysqli_num_rows($reacheeligiblechileka);
 				
-				$contactsposck=mysql_query("SELECT * FROM reachedcontacts  WHERE outcome = 'New positive' AND outcomedate between '$fdate' and '$tdate'  ");
-				$poscontactsck=mysql_num_rows($contactsposck);
+				$contactsposck=mysqli_query($db,"SELECT * FROM reachedcontacts  WHERE outcome = 'New positive' AND outcomedate between '$fdate' and '$tdate'  ");
+				$poscontactsck=mysqli_num_rows($contactsposck);
 				
 								
 				

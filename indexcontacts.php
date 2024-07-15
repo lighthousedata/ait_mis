@@ -2,7 +2,7 @@
 // connect to the database
  require_once("includes/Connection.php"); ?>
  <?php //include('errors.php'); ?>
-<?php include("includes/functions.php"); ?>
+<?php include("includes/form_functions.php"); ?>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
 	<?php
 	$currentyear=date('d-m-Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
@@ -38,7 +38,7 @@ $elicited = $sexPartStatusUnk + $sexPartPosNoart + $sexPartNofollowup + $ChilSta
 $eligibles = $sexPartStatusUnk + $sexPartPosNoart + $ChilStatusUnk + $ChilPosNoart + $ParStatusUnk + $ParPosNoart;
 
 
-$insertdetails = mysql_query("insert into indexcontacts(indexnum, sexPartStatusUnk,sexPartPosNoart,sexPartNofollowup,ChilStatusUnk,ChilPosNoart,
+$insertdetails = mysqli_query($db,"insert into indexcontacts(indexnum, sexPartStatusUnk,sexPartPosNoart,sexPartNofollowup,ChilStatusUnk,ChilPosNoart,
 ChilNoFollowup,ParStatusUnk,ParPosNoart,ParNofollowup, elicitedcontacts, eligibles) 
 						values ('$indexnum', '$sexPartStatusUnk','$sexPartPosNoart', '$sexPartNofollowup','$ChilStatusUnk','$ChilPosNoart','$ChilNoFollowup',
 						'$ParStatusUnk', '$ParPosNoart', '$ParNofollowup', '$elicited', '$eligibles')");
@@ -47,7 +47,7 @@ ChilNoFollowup,ParStatusUnk,ParPosNoart,ParNofollowup, elicitedcontacts, eligibl
 				 {
 				 echo "<p><font color='green' style='text-align:center'>Data successfully saved</font></p>";
 				 }else{
-				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysql_error();
+				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysqli_error($db);
 				 }	
   }				 
 ?>
@@ -58,8 +58,8 @@ ChilNoFollowup,ParStatusUnk,ParPosNoart,ParNofollowup, elicitedcontacts, eligibl
   	  <label>Index client number</label>
   	   <select name="indexnum" style="float:left; height:40px" required = "Yes" ><option>
 														<?php
-									$selectindex=mysql_query("SELECT * FROM indexreg");
-				while($indexnum=mysql_fetch_array($selectindex)){
+									$selectindex=mysqli_query($db,"SELECT * FROM indexreg");
+				while($indexnum=mysqli_fetch_array($selectindex)){
 				
 				echo "<option>".$indexnum['indexnum']."</option>";
 				}

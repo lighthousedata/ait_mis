@@ -25,7 +25,7 @@ function limitText(limitField, limitNum) {
 	$currentyear=date('d-m-Y');
 	$today=date('d/m/Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
@@ -61,14 +61,14 @@ $ipvstatus = $_POST['ipvstatus'];
 $mode = $_POST['mode'];
 
 //Insert Query of SQL
-$insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,entrypoint,contnum,gender,age,ipvstatus,mode) 
+$insertdetails = mysqli_query($db,"insert into contacts(facility,indexinterviewdate,entrypoint,contnum,gender,age,ipvstatus,mode) 
 							values ('$facility','$indexinterviewdate', '$entrypoint','$contnum','$gender','$age','$ipvstatus','$mode')");
 	
 	if($insertdetails)
 				 {
 				 echo "<p><font color='green' style='text-align:center'>Data successfully saved</font></p>";
 				 }else{
-				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysql_error();
+				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysqli_error($db);
 				 }	
   }		
   }
@@ -81,8 +81,8 @@ $insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,e
   	  <label>Facility Name</label>
   	  <select name="facility" style="float:left; height:40px" required = "YES"><option>
 														<?php
-									$selectfacilities=mysql_query("SELECT * FROM facilities");
-				while($facility=mysql_fetch_array($selectfacilities)){
+									$selectfacilities=mysqli_query($db,"SELECT * FROM facilities");
+				while($facility=mysqli_fetch_array($selectfacilities)){
 				
 				echo "<option>".$facility['FacName']."</option>";
 				}
@@ -97,8 +97,8 @@ $insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,e
 	<label>Entry Point</label>
   	  <select name="entrypoint" style="float:left; height:40px" required><option>
 														<?php
-									$selectsource=mysql_query("SELECT * FROM entrypoints");
-				while($entry=mysql_fetch_array($selectsource)){
+									$selectsource=mysqli_query($db,"SELECT * FROM entrypoints");
+				while($entry=mysqli_fetch_array($selectsource)){
 				
 				echo "<option>".$entry['sourceid']."</option>";
 				}
@@ -112,8 +112,8 @@ $insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,e
   	  <label>Gender</label>
   	   <select name="gender" style="float:left; height:40px" required "YES"><option>
 														<?php
-									$selectsex=mysql_query("SELECT * FROM gender");
-				while($gender=mysql_fetch_array($selectsex)){
+									$selectsex=mysqli_query($db,"SELECT * FROM gender");
+				while($gender=mysqli_fetch_array($selectsex)){
 				
 				echo "<option>".$gender['gender']."</option>";
 				}
@@ -132,8 +132,8 @@ $insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,e
   	  <label>IPV Status</label>
   	  <select name="ipvstatus" style="float:left; height:40px" required "YES"><option>
 														<?php
-									$selectipv=mysql_query("SELECT * FROM ipvstatus");
-				while($ipvstatus=mysql_fetch_array($selectipv)){
+									$selectipv=mysqli_query($db,"SELECT * FROM ipvstatus");
+				while($ipvstatus=mysqli_fetch_array($selectipv)){
 				
 				echo "<option>".$ipvstatus['rname']."</option>";
 				}
@@ -143,8 +143,8 @@ $insertdetails = mysql_query("insert into contacts(facility,indexinterviewdate,e
   	  <label>Notification mode</label>
   	  <select name="mode" style="float:left; height:40px" required "YES"><option>
 														<?php
-				$selectmodes=mysql_query("SELECT * FROM notificationmodes");
-				while($mode=mysql_fetch_array($selectmodes)){
+				$selectmodes=mysqli_query($db,"SELECT * FROM notificationmodes");
+				while($mode=mysqli_fetch_array($selectmodes)){
 				
 				echo "<option>".$mode['modename']."</option>";
 				}

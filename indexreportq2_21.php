@@ -18,38 +18,38 @@
 	$dateidentified=date('y/m/d');
 	$currentyear=date('D/d/m/Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
          
 <?php
-$selectallpatients=mysql_query("SELECT * FROM indexreg where dateidentified < '2021-10-01'");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg where dateidentified < '2021-10-01'");
+$numrows=mysqli_num_rows($selectallpatients);
 if(isset($_POST['reportdata'])){
  $reportterm=$_POST['reportby'];
 $reportvalue=$_POST['reportterm'];
  
 if($reportterm=='none'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE dateidentified < '2021-10-01'");
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified < '2021-10-01'");
  }else if($reportterm=='year'){
 	  $currentyear=date('Y');
 	  if($reportvalue>$currentyear){
 		  $msgyear="error";
 		  $numrows=0;
 	  } else{
-      $selectallpatients=mysql_query("SELECT * FROM indexreg WHERE dateidentified < '2021-10-01'");
-      $numrows=mysql_num_rows($selectallpatients);
+      $selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified < '2021-10-01'");
+      $numrows=mysqli_num_rows($selectallpatients);
 	  }
  }else if($reportterm=='facility'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE facility LIKE '%$reportvalue%'AND  dateidentified < '2021-10-01'");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE facility LIKE '%$reportvalue%'AND  dateidentified < '2021-10-01'");
+$numrows=mysqli_num_rows($selectallpatients);
  }else if($reportterm=='gender'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE gender ='$reportvalue'AND dateidentified < '2021-10-01'");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE gender ='$reportvalue'AND dateidentified < '2021-10-01'");
+$numrows=mysqli_num_rows($selectallpatients);
  }else if($reportterm=='indexnum'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE indexnum LIKE '%$reportvalue%'AND dateidentified < '2021-10-01'");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE indexnum LIKE '%$reportvalue%'AND dateidentified < '2021-10-01'");
+$numrows=mysqli_num_rows($selectallpatients);
 }
 }?><center>
 <table bgcolor="#666666" width="70%" border="0">

@@ -54,38 +54,38 @@ $tdate=$_POST['tdate'];
 	$dateidentified=date('y/m/d');
 	$currentyear=date('D/d/m/Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
          
 <?php
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
+$numrows=mysqli_num_rows($selectallpatients);
 if(isset($_POST['reportdata'])){
  $reportterm=$_POST['reportby'];
 $reportvalue=$_POST['reportterm'];
  
 if($reportterm=='none'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate'  ");
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate'  ");
  }else if($reportterm=='year'){
 	  $currentyear=date('Y');
 	  if($reportvalue>$currentyear){
 		  $msgyear="error";
 		  $numrows=0;
 	  } else{
-      $selectallpatients=mysql_query("SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
-      $numrows=mysql_num_rows($selectallpatients);
+      $selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE dateidentified between '$fdate' and '$tdate' ");
+      $numrows=mysqli_num_rows($selectallpatients);
 	  }
  }else if($reportterm=='facility'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE facility LIKE '%$reportvalue%' AND dateidentified between '$fdate' and '$tdate' ");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE facility LIKE '%$reportvalue%' AND dateidentified between '$fdate' and '$tdate' ");
+$numrows=mysqli_num_rows($selectallpatients);
  }else if($reportterm=='gender'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE gender ='$reportvalue'AND dateidentified between '$fdate' and '$tdate' ");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE gender ='$reportvalue'AND dateidentified between '$fdate' and '$tdate' ");
+$numrows=mysqli_num_rows($selectallpatients);
  }else if($reportterm=='indexnum'){
-$selectallpatients=mysql_query("SELECT * FROM indexreg WHERE indexnum LIKE '%$reportvalue%' AND dateidentified between '$fdate' and '$tdate' ");
-$numrows=mysql_num_rows($selectallpatients);
+$selectallpatients=mysqli_query($db,"SELECT * FROM indexreg WHERE indexnum LIKE '%$reportvalue%' AND dateidentified between '$fdate' and '$tdate' ");
+$numrows=mysqli_num_rows($selectallpatients);
 }
 }?><center>
 <table bgcolor="#666666" width="90%" border="0">
@@ -111,7 +111,7 @@ $numrows=mysql_num_rows($selectallpatients);
  {
   {
 	echo '';  
- while($selected=mysql_fetch_array($selectallpatients))
+ while($selected=mysqli_fetch_array($selectallpatients))
  {  
  	$uniqueid=$selected['indexnum'];
  	$facility=$selected['facility'];

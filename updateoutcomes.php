@@ -18,7 +18,7 @@
 	$currentyear=date('D/d/m/Y');
 	$today=date('d/m/Y');
 	echo"<font size='+1'>$currentyear</font>";
-	$username=mysql_query("SELECT username from users where password(?)");
+	$username=mysqli_query($db,"SELECT username from users where password(?)");
 	echo "<fontsize='+1'>$username</font>";
 	?>
   </div>
@@ -52,14 +52,14 @@
 				$outcome=$_POST['outcome'];
 			
 									
-				$insertdetails =mysql_query ("INSERT INTO contactsoutcomes (contnum, outcome, outcomedate) 
+				$insertdetails =mysqli_query($db,"INSERT INTO contactsoutcomes (contnum, outcome, outcomedate) 
 							values('$contnum','$outcome','$outcomedate')"); 
 							
 			   if($insertdetails)
 				 {
 				 echo "<p><font color='green' style='text-align:center'>Data successfully saved</font></p>";
 				 }else{
-				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysql_error();
+				 echo "<p><font color='red' style='text-align:center'>Insertion failed</font></p>".mysqli_error($db);
 				 }	
   }			
 				}  
@@ -71,8 +71,8 @@
   	  <label>Contact number</label>
   	  <select name="contnum" style ="float:left; height:40px" required><option>
 														<?php
-									$selectcontacts=mysql_query("SELECT * FROM contacts");
-				while($contnum=mysql_fetch_array($selectcontacts)){
+									$selectcontacts=mysqli_query($db,"SELECT * FROM contacts");
+				while($contnum=mysqli_fetch_array($selectcontacts)){
 				
 				echo "<option>".$contnum['contnum']."</option>";
 				}
@@ -82,8 +82,8 @@
 	<label>Final Outcome</label>
   	  <select name="outcome" style="float:left; height:40px" required><option>
 														<?php
-									$selectoutcomes=mysql_query("SELECT * FROM outcomes");
-				while($outcome=mysql_fetch_array($selectoutcomes)){
+									$selectoutcomes=mysqli_query($db,"SELECT * FROM outcomes");
+				while($outcome=mysqli_fetch_array($selectoutcomes)){
 				
 				echo "<option>".$outcome['outcomename']."</option>";
 				}
